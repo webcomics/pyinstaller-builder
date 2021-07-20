@@ -41,3 +41,31 @@ jobs:
         with:
           name: dist
           path: dist/*
+
+  publish:
+    name: Publish package
+    permissions:
+      contents: write
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download archived package
+        uses: actions/download-artifact@v2
+        with:
+          name: dist
+
+      - name: Find dist files
+        id: files
+        run: echo "::set-output name=FILES::$(find -type f -printf '%p ')"
+
+      - name: Publish snapshot package
+        uses: meeDamian/github-release@2.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag: snapshot
+          body: "Snapshot build"
+          files: ${{ steps.files.outputs.FILES }}
+          allow_override: true
+          gzip: false
