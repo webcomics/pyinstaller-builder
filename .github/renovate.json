@@ -1,0 +1,17 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>webcomics/.github:renovate-config"
+  ],
+  "regexManagers": [
+    {
+      "description": "Update checkout tag in GitHub Actions",
+      "fileMatch": ["^\\.github/workflows/.*\\.ya?ml$"],
+      "matchStrings": [
+        "repository: (?<depName>.+?)\\s+ref: (?<currentValue>.+?)\\s"
+      ],
+      "datasourceTemplate": "github-tags",
+      "versioningTemplate": "docker"
+    }
+  ]
+}
