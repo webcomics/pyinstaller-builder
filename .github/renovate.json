@@ -11,7 +11,7 @@
         "repository: (?<depName>.+?)\\s+ref: (?<currentValue>.+?)\\s"
       ],
       "datasourceTemplate": "github-tags",
-      "versioningTemplate": "docker"
+      "versioningTemplate": "node"
     }
   ]
 }
