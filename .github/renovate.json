@@ -11,7 +11,7 @@
         "repository: (?<depName>.+?)\\s+ref: (?<currentValue>.+?)\\s"
       ],
       "datasourceTemplate": "github-tags",
-      "versioningTemplate": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)$"
+      "versioningTemplate": "regex:^v(?<major>\\d+)\\.(?<minor>\\d+)(\\.(?<patch>\\d+))?$"
     }
   ]
 }
