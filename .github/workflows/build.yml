@@ -59,7 +59,7 @@ jobs:
 
       - name: Find dist files
         id: files
-        run: echo "FILES=$(find -type f -printf '%p ')" >> $GITHUN_OUTPUT
+        run: echo "FILES=$(find -type f -printf '%p ')" >> $GITHUB_OUTPUT
 
       - name: Publish snapshot package
         uses: meeDamian/github-release@2.0
