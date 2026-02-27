@@ -57,16 +57,8 @@ jobs:
         with:
           name: dist
 
-      - name: Find dist files
-        id: files
-        run: echo "FILES=$(find -type f -printf '%p ')" >> $GITHUB_OUTPUT
-
       - name: Publish snapshot package
-        uses: meeDamian/github-release@2.0
+        uses: softprops/action-gh-release@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag: snapshot
-          body: "Snapshot build"
-          files: ${{ steps.files.outputs.FILES }}
-          allow_override: true
-          gzip: false
+          tag_name: snapshot
+          files: 'dist/*'
